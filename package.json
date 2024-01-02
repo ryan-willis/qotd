@@ -1,0 +1,39 @@
+{
+  "name": "qotd",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "QOTD_ENV=dev vite",
+    "build": "tsc && QOTD_ENV=prod vite build",
+    "webserver": "go run ./cmd/webserver",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "build:docker": "docker buildx build --platform=linux/arm64,linux/amd64 -f build/webserver.Dockerfile . -t ghcr.io/ryan-willis/qotd:latest",
+    "publish:docker": "npm run build:docker -- --push",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@mantine/core": "^7.4.2",
+    "@mantine/hooks": "^7.4.2",
+    "@mantine/notifications": "^7.11.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-use-websocket": "^4.8.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.2",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "postcss": "^8.4.33",
+    "postcss-preset-mantine": "^1.12.3",
+    "postcss-simple-vars": "^7.0.1",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8"
+  }
+}

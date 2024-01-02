@@ -1,0 +1,1 @@
+protoc --go-grpc_out=./api/v1/ --go_out=./api/v1/ ./api/v1/roomserver.proto
